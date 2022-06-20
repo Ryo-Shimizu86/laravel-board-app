@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
@@ -34,7 +35,10 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $posts = $request->all();
-        dd($posts);
-        return view('post');
+        $post = new Post();
+        $post->message = $posts['postMessage'];
+        $post->user_id = \Auth::id();
+        $post->save();
+        return redirect( route('home') );
     }
 }
