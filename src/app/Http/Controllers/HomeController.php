@@ -17,12 +17,24 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * 投稿画面表示
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('home');
+        return view('post');
+    }
+
+    /**
+     * 投稿保存処理
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function store(Request $request)
+    {
+        $posts = $request->all();
+        dd($posts);
+        return view('post');
     }
 }
