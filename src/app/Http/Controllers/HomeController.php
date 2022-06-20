@@ -43,4 +43,15 @@ class HomeController extends Controller
         $post->save();
         return redirect( route('home') );
     }
+
+    /**
+     * 投稿詳細処理
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function detail(Request $request)
+    {
+        $post = Post::find($request->id);
+        return view('detail', ['post' => $post]);
+    }
 }
