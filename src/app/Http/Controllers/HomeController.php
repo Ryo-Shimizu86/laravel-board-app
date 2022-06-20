@@ -24,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('post');
+        $posts = Post::with('user')->orderBy('updated_at', 'DESC')->paginate(3);
+        // dd($posts);
+        return view('post', ['posts' => $posts]);
     }
 
     /**
