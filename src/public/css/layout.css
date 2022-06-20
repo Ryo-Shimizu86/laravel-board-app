@@ -1,0 +1,15 @@
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+}
+.card-title,
+.card-subtitle {
+    display: inline;
+}
+.message-title {
+    max-width: 100%;
+}
