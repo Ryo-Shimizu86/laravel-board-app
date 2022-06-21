@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Exception;
+use Log;
+
 
 class HomeController extends Controller
 {
@@ -37,11 +40,21 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $posts = $request->all();
-        $post = new Post();
-        $post->message = $posts['postMessage'];
-        $post->user_id = \Auth::id();
-        $post->save();
-        return redirect( route('home') );
+
+        try {
+
+            // throw new Exception();   // 例外を意図的に発生
+
+            $post = new Post();
+            $post->message = $posts['postMessage'];
+            $post->user_id = \Auth::id();
+            $post->save();
+            return redirect( route('home') );
+        } catch (Exception $e) {
+            Log::error($e);
+            return redirect()->route('home')
+                ->withErrors(['error' => '投稿メッセージの保存に失敗しました。']);
+        }
     }
 
     /**
