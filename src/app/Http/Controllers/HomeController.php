@@ -45,7 +45,7 @@ class HomeController extends Controller
     }
 
     /**
-     * 投稿詳細処理
+     * 投稿詳細表示
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
