@@ -16,6 +16,11 @@
             </div>
         </div>
         <div>
+            <form action="{{ route('delete') }}" method="POST">
+                @csrf
+                <input type="hidden" name="id" value="{{ $post->id }}">
+                <input type="submit" class="btn btn-danger" value="削除">
+            </form>
             <a href="{{ route('home') }}" role="button" class="btn btn-primary"
                 >一覧に戻る</a
             >

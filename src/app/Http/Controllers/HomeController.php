@@ -29,7 +29,6 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::with('user')->orderBy('updated_at', 'DESC')->paginate(3);
-        // dd($posts);
         return view('post', ['posts' => $posts]);
     }
 
@@ -67,5 +66,16 @@ class HomeController extends Controller
     {
         $post = Post::find($request->id);
         return view('detail', ['post' => $post]);
+    }
+
+    /**
+     * 投稿削除
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function delete(Request $request)
+    {
+        Post::find($request->id)->delete();
+        return redirect()->route('home');
     }
 }

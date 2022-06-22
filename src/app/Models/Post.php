@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 
 class Post extends Model
@@ -13,6 +14,8 @@ class Post extends Model
      * @var string
      */
     protected $table = 'posts';
+
+    use SoftDeletes;
 
     public function user()
     {
