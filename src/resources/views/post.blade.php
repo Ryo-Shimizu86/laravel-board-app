@@ -1,13 +1,7 @@
 @extends('layouts.app') @section('content')
 <div class="container">
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+        @include('common.error', ['errors' => $errors ])
     @endif
     <div class="row justify-content-start">
         <div class="col-md-8">
