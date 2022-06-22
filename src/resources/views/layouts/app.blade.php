@@ -59,7 +59,7 @@
                                 <a
                                     class="nav-link"
                                     href="{{ route('login') }}"
-                                    >{{ __("Login") }}</a
+                                    >{{ __("label.Login") }}</a
                                 >
                             </li>
                             @endif @if (Route::has('register'))
@@ -67,7 +67,7 @@
                                 <a
                                     class="nav-link"
                                     href="{{ route('register') }}"
-                                    >{{ __("Register") }}</a
+                                    >{{ __("label.Register") }}</a
                                 >
                             </li>
                             @endif @else
