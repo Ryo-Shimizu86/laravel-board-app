@@ -72,10 +72,16 @@ class HomeController extends Controller
      */
     public function update(Request $request)
     {
-        $postId = $request->id;
-        Post::where('id', $postId)->update(['message' => $request->postMessage]);
-        $post = Post::where('id', $postId)->first();
-        return view('detail', ['post' => $post]);
+        try {
+            $postId = $request->id;
+            Post::where('id', $postId)->update(['message' => $request->postMessage]);
+            $post = Post::where('id', $postId)->first();
+            return view('detail', ['post' => $post]);
+        } catch (Exception $e) {
+            Log::error($e);
+            return redirect()->route('detail', ['id' => $postId])
+                ->withErrors(['error' => '投稿メッセージの更新に失敗しました。']);
+        }
     }
 
     /**
