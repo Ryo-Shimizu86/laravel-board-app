@@ -85,7 +85,14 @@ class HomeController extends Controller
      */
     public function delete(Request $request)
     {
-        Post::find($request->id)->delete();
-        return redirect()->route('home');
+        try {
+            $postId = $request->id;
+            Post::find($postId)->delete();
+            return redirect()->route('home');
+        } catch (Exception $e) {
+            Log::error($e);
+            return redirect()->route('detail', ['id' => $postId])
+                ->withErrors(['error' => '投稿メッセージの削除に失敗しました。']);
+        }
     }
 }

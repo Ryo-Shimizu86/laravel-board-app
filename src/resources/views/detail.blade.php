@@ -1,5 +1,8 @@
 @extends('layouts.app') @section('content')
 <div id="message-update-app" class="container">
+    @if ($errors->any())
+        @include('common.error', ['errors' => $errors ])
+    @endif
     <div class="row justify-content-start">
         <!-- <div class="col-2">画像</div> -->
         <div class="col-10">
