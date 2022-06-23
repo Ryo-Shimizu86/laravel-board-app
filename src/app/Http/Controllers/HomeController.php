@@ -73,6 +73,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function update(Request $request)
+    {
+        $postId = $request->id;
+        Post::where('id', $postId)->update(['message' => $request->postMessage]);
+        $post = Post::where('id', $postId)->first();
+        return view('detail', ['post' => $post]);
+    }
+
+    /**
+     * 投稿削除
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function delete(Request $request)
     {
         Post::find($request->id)->delete();

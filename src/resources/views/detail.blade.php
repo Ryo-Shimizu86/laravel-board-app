@@ -11,7 +11,23 @@
                     {{ $post->updated_at->format('Y/m/d') }}
                 </h6>
                 <p class="card-text">
-                    {{ $post->message }}
+                    <form action="{{ route('update') }}" method="post">
+                        <div class="mb-3">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $post->id }}">
+                            <textarea
+                                class="form-control mb-3"
+                                name="postMessage"
+                                placeholder="ここにメッセージを入力"
+                                rows="3"
+                            >{{ $post->message }}</textarea>
+                            <input
+                                type="submit"
+                                class="btn btn-primary"
+                                value="保存"
+                            />
+                        </div>
+                    </form>
                 </p>
             </div>
         </div>
