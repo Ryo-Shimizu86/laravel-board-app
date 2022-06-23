@@ -1,5 +1,5 @@
 @extends('layouts.app') @section('content')
-<div class="container">
+<div id="message-update-app" class="container">
     <div class="row justify-content-start">
         <!-- <div class="col-2">画像</div> -->
         <div class="col-10">
@@ -25,7 +25,13 @@
                             class="btn btn-primary"
                             value="保存"
                         />
-                        <input type="submit" class="btn btn-danger" value="削除" formaction="{{ route('delete')}}">
+                        <input
+                            @click="deleteConfirm"
+                            type="submit"
+                            class="btn btn-danger"
+                            value="削除"
+                            formaction="{{ route('delete')}}"
+                        />
                         <a href="{{ route('home') }}" role="button" class="btn btn-outline-dark">一覧に戻る</a>
                     </form>
                 </p>
