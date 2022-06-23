@@ -42,9 +42,6 @@ class HomeController extends Controller
         $posts = $request->all();
 
         try {
-
-            // throw new Exception();   // 例外を意図的に発生
-
             $post = new Post();
             $post->message = $posts['postMessage'];
             $post->user_id = \Auth::id();
@@ -69,7 +66,7 @@ class HomeController extends Controller
     }
 
     /**
-     * 投稿削除
+     * 投稿更新
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
