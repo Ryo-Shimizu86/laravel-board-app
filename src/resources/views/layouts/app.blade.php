@@ -117,4 +117,6 @@
             <main class="py-4">@yield('content')</main>
         </div>
     </body>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="{{ mix('js/main.js') }}" type="module"></script>
 </html>
