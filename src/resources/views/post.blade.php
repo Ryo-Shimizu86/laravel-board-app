@@ -12,7 +12,7 @@
                         class="form-control mb-3"
                         name="postMessage"
                         placeholder="ここにメッセージを入力"
-                        rows="3"
+                        rows="10"
                     ></textarea>
                     <input
                         type="submit"
